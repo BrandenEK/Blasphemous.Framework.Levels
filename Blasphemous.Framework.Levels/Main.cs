@@ -7,9 +7,11 @@ namespace Blasphemous.Framework.Levels;
 public class Main : BaseUnityPlugin
 {
     public static LevelFramework LevelFramework { get; private set; }
+    public static Main Instance { get; private set; }
 
     private void Start()
     {
+        Instance = this;
         LevelFramework = new LevelFramework();
     }
 }
