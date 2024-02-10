@@ -3,8 +3,10 @@ using Blasphemous.Framework.Levels.Modifiers;
 using Blasphemous.ModdingAPI;
 using Framework.Managers;
 using Framework.Penitences;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,10 +41,27 @@ public class LevelFramework : BlasMod
 
     protected override void OnInitialize()
     {
-        Main.ModLoader.ProcessModFunction(mod => ProcessLevelEdits(mod.FileHandler.LoadLevels()));
+        foreach (var editDict in LoadAllEdits())
+            ProcessLevelEdits(editDict);
 
         int amount = _additions.Keys.Concat(_modifications.Keys).Concat(_deletions.Keys).Distinct().Count();
         Log($"Loaded level modifications for {amount} scenes");
+    }
+
+    private IEnumerable<Dictionary<string, LevelEdit>> LoadAllEdits()
+    {
+        string levelsPath = Path.GetFullPath("Modding/levels");
+
+        return Directory.GetDirectories(levelsPath)
+            .Where(folder => IsModLoaded(Path.GetFileName(folder), out _)) // Need to check mod loaded by name!!
+            .Select(LoadModEdits);
+    }
+
+    private Dictionary<string, LevelEdit> LoadModEdits(string folder)
+    {
+        return Directory.GetFiles(folder).ToDictionary(
+            Path.GetFileNameWithoutExtension,
+            path => JsonConvert.DeserializeObject<LevelEdit>(File.ReadAllText(path)));
     }
 
     protected override void OnLevelPreloaded(string oldLevel, string newLevel)

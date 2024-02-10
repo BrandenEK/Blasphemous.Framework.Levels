@@ -1,5 +1,6 @@
 ﻿using Blasphemous.ModdingAPI.Items;
 using Framework.Inventory;
+using Framework.Managers;
 using Framework.Util;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ internal class ShrineItemModifier : IModifier
 
         InteractableInvAdd addComp = item.GetComponent<InteractableInvAdd>();
         addComp.item = data.id;
-        addComp.itemType = Framework.Managers.InventoryManager.ItemType.Sword;
+        addComp.itemType = InventoryManager.ItemType.Sword;
 
         GameObject shrine = obj.transform.GetChild(1).gameObject;
         shrine.transform.localPosition = Vector3.zero;

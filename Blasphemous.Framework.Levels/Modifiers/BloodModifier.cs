@@ -12,7 +12,7 @@ internal class BloodModifier : IModifier
         // Must be added in reverse order so that previous platforms can reference their new ones
         obj.name = data.id;
 
-        Transform holder = Main.ModdingAPI.LevelHandler.CurrentObjectHolder;
+        Transform holder = Main.LevelFramework.CurrentObjectHolder;
         BloodFirst = bool.Parse(data.properties[0]);
         BloodObjects = data.properties.Skip(1).Select(faithId => holder.Find(faithId).gameObject).ToArray();
 
