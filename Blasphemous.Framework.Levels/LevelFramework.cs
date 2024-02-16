@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 namespace Blasphemous.Framework.Levels;
 
-public class LevelFramework : BlasMod
+internal class LevelFramework : BlasMod
 {
     public LevelFramework() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
@@ -53,7 +53,7 @@ public class LevelFramework : BlasMod
         string levelsPath = Path.GetFullPath("Modding/levels");
 
         return Directory.GetDirectories(levelsPath)
-            .Where(folder => IsModLoaded(Path.GetFileName(folder), out _)) // Need to check mod loaded by name!!
+            .Where(folder => IsModLoadedName(Path.GetFileName(folder), out _))
             .Select(LoadModEdits);
     }
 
