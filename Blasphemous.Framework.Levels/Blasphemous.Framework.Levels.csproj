@@ -8,14 +8,14 @@
     <Product>Level Framework</Product>
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
-    <Description>A mod for Blasphemous 1</Description>
+    <Description>Framework that allows other mods to implement level modifications</Description>
     <Version>0.1.0</Version>
 
     <TargetName>LevelFramework</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>obj\Release\$(TargetName)</DocumentationFile>
-    <RepositoryUrl>https://github.com/Example</RepositoryUrl>
+    <DocumentationFile>bin\Release\$(TargetName).xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/BrandenEK/Blasphemous.Framework.Levels</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 

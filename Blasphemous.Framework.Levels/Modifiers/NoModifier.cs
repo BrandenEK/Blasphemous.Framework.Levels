@@ -12,7 +12,6 @@ public class NoModifier : IModifier
     /// <summary>
     /// Creates a new modifier with the specified name
     /// </summary>
-    /// <param name="name"></param>
     public NoModifier(string name)
     {
         _name = name;

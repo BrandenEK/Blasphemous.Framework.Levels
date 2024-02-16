@@ -13,9 +13,12 @@ using UnityEngine.SceneManagement;
 
 namespace Blasphemous.Framework.Levels;
 
-internal class LevelFramework : BlasMod
+/// <summary>
+/// Handles loading a modifying objects in levels
+/// </summary>
+public class LevelFramework : BlasMod
 {
-    public LevelFramework() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+    internal LevelFramework() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
     private readonly Dictionary<string, GameObject> _objects = new();
     private readonly IModifier _baseModifier = new BaseModifier();
@@ -26,8 +29,10 @@ internal class LevelFramework : BlasMod
 
     private bool _loadedObjects = false;
 
-    // Only accessed when adding objects, so always set when loading scene with objects to add
     private Transform m_currentObjectHolder;
+    /// <summary>
+    /// Only accessed when adding objects, so always set when loading scene with objects to add
+    /// </summary>
     public Transform CurrentObjectHolder
     {
         get
@@ -39,6 +44,9 @@ internal class LevelFramework : BlasMod
         }
     }
 
+    /// <summary>
+    /// Load level edits for all enabled mods
+    /// </summary>
     protected override void OnInitialize()
     {
         foreach (var editDict in LoadAllEdits())
@@ -64,6 +72,9 @@ internal class LevelFramework : BlasMod
             path => JsonConvert.DeserializeObject<LevelEdit>(File.ReadAllText(path)));
     }
 
+    /// <summary>
+    /// Apply all additions, modifications, and deletions for this scene
+    /// </summary>
     protected override void OnLevelPreloaded(string oldLevel, string newLevel)
     {
         bool hasAdditions = _additions.TryGetValue(newLevel, out var additions);
@@ -79,6 +90,9 @@ internal class LevelFramework : BlasMod
         if (hasDeletions) DeleteObjects(deletions, newLevel);
     }
 
+    /// <summary>
+    /// When loading menu, load all necessary objects from other scenes
+    /// </summary>
     protected override void OnLevelLoaded(string oldLevel, string newLevel)
     {
         if (!_loadedObjects && newLevel == "MainMenu")

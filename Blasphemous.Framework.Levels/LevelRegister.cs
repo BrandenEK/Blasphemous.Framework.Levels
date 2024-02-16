@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Blasphemous.Framework.Levels;
 
-/// <summary> Registers a new level modification </summary>
+/// <summary> Registers a new level modifier </summary>
 public static class LevelRegister
 {
     private static readonly Dictionary<string, ObjectCreator> _creators = new();
@@ -25,7 +25,7 @@ public static class LevelRegister
         return success;
     }
 
-    /// <summary> Registers a new level modification </summary>
+    /// <summary> Registers a new level modifier </summary>
     public static void RegisterObjectCreator(this ModServiceProvider provider, string type, ObjectCreator creator)
     {
         if (provider == null)
