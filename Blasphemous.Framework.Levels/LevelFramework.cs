@@ -2,9 +2,7 @@
 using Blasphemous.Framework.Levels.Modifiers;
 using Blasphemous.ModdingAPI;
 using Framework.Managers;
-using Framework.Penitences;
 using Newtonsoft.Json;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -201,39 +199,13 @@ public class LevelFramework : BlasMod
         string conditionType = condition.Substring(0, colon);
         string conditionValue = condition.Substring(colon + 1);
 
-        switch(conditionType)
+        return conditionType switch
         {
-            case "flag":
-            {
-                return Core.Events.GetFlag(conditionValue);
-            }
-            case "penitence":
-            {
-                IPenitence penitence = Core.PenitenceManager.GetCurrentPenitence();
-                return penitence != null && penitence.Id == conditionValue;
-            }
-            case "gamemode":
-            {
-                try
-                {
-                    GameModeManager.GAME_MODES gameMode = (GameModeManager.GAME_MODES)Enum.Parse(typeof(GameModeManager.GAME_MODES), conditionValue);
-                    return Core.GameModeManager.IsCurrentMode(gameMode);
-                }
-                catch(Exception)
-                {
-                    Main.LevelFramework.LogError("CheckCondition: Invalid game mode value: " + conditionValue);
-                }
-                
-                break;
-            }
-            default:
-            {
-                Main.LevelFramework.LogError("CheckCondition: Invalid condition type: " + conditionType);
-                break;
-            }
-        }
-
-        return true;
+            "flag" => Core.Events.GetFlag(conditionValue),
+            "penitence" => Core.PenitenceManager.GetCurrentPenitence()?.Id == conditionValue,
+            "gamemode" => Core.GameModeManager.CheckGameModeActive(conditionValue),
+            _ => throw new System.ArgumentException($"Invalid condition type: {conditionType}")
+        };
     }
 
     /// <summary>
