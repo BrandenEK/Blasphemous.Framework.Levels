@@ -2,7 +2,6 @@
 using Blasphemous.Framework.Levels.Modifiers;
 using Blasphemous.ModdingAPI;
 using Framework.Managers;
-using Framework.Penitences;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
@@ -200,18 +199,13 @@ public class LevelFramework : BlasMod
         string conditionType = condition.Substring(0, colon);
         string conditionValue = condition.Substring(colon + 1);
 
-        if (conditionType == "flag")
+        return conditionType switch
         {
-            return Core.Events.GetFlag(conditionValue);
-        }
-
-        if (conditionType == "penitence")
-        {
-            IPenitence penitence = Core.PenitenceManager.GetCurrentPenitence();
-            return penitence != null && penitence.Id == conditionValue;
-        }
-
-        return true;
+            "flag" => Core.Events.GetFlag(conditionValue),
+            "penitence" => Core.PenitenceManager.GetCurrentPenitence()?.Id == conditionValue,
+            "gamemode" => Core.GameModeManager.CheckGameModeActive(conditionValue),
+            _ => throw new System.ArgumentException($"Invalid condition type: {conditionType}")
+        };
     }
 
     /// <summary>
