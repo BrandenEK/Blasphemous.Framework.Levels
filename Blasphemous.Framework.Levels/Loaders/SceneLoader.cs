@@ -44,6 +44,7 @@ public class SceneLoader : ILoader
         // Load the item from this scene
         Scene tempScene = SceneManager.GetSceneByName(_scene);
         GameObject sceneObject = tempScene.FindObject(_path, true);
+        sceneObject.SetActive(false);
 
         if (sceneObject != null)
         {
