@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Tools.Level.Layout;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +29,7 @@ public class LevelFramework : BlasMod
 
     private bool _loadedObjects = false;
 
-    private Transform m_currentObjectHolder;
+    private Transform x_currentObjectHolder;
     /// <summary>
     /// Only accessed when adding objects, so always set when loading scene with objects to add
     /// </summary>
@@ -36,10 +37,10 @@ public class LevelFramework : BlasMod
     {
         get
         {
-            if (m_currentObjectHolder == null)
-                m_currentObjectHolder = GameObject.Find("LOGIC").transform;
+            if (x_currentObjectHolder == null)
+                x_currentObjectHolder = Object.FindObjectOfType<LevelInitializer>().transform;
 
-            return m_currentObjectHolder;
+            return x_currentObjectHolder;
         }
     }
 
@@ -249,6 +250,7 @@ public class LevelFramework : BlasMod
             // Store it in the dictionary
             Log("Successfully loaded object of type " + type);
             loadedObject.name = type;
+            loadedObject.transform.parent = Main.Instance.transform;
             loadedObject.transform.position = Vector3.zero;
             loadedObject.SetActive(false);
             _objects.Add(type, loadedObject);
