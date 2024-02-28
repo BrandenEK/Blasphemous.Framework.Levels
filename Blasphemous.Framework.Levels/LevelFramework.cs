@@ -250,6 +250,7 @@ public class LevelFramework : BlasMod
             // Store it in the dictionary
             Log("Successfully loaded object of type " + type);
             loadedObject.name = type;
+            loadedObject.transform.parent = Main.Instance.transform;
             loadedObject.transform.position = Vector3.zero;
             loadedObject.SetActive(false);
             _objects.Add(type, loadedObject);
