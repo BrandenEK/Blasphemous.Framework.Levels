@@ -298,14 +298,45 @@ public class LevelFramework : BlasMod
             new SceneLoader("D17Z01S10_LOGIC", "LOGIC/INTERACTABLES/{0}"),
             new BloodModifier()));
 
-        // Traps
-        provider.RegisterObjectCreator("spikes", new ObjectCreator(
+        // spikes
+        provider.RegisterObjectCreator("spikes-wasteland", new ObjectCreator(
             new SceneLoader("D01Z03S01_DECO", "MIDDLEGROUND/AfterPlayer/Spikes/{0}"),
+            new SpikeModifier()));
+        provider.RegisterObjectCreator("spikes-jondo-tiny", new ObjectCreator(
+            new SceneLoader("D03Z02S02_DECO", "MIDDLEGROUND/AfterPlayer/Gameplay/Spikes/inverted-bell-spritesheet_56"),
+            new SpikeModifier(new Vector2(0.9f, 0.8f))));
+        provider.RegisterObjectCreator("spikes-jondo", new ObjectCreator(
+            new SceneLoader("D03Z02S03_DECO", "MIDDLEGROUND/AfterPlayer/Spikes/inverted-bell-spritesheet_23"),
+            new SpikeModifier()));
+        provider.RegisterObjectCreator("spikes-jondo-long", new ObjectCreator(
+            new SceneLoader("D03Z02S03_DECO", "MIDDLEGROUND/AfterPlayer/Spikes/inverted-bell-spritesheet_25"),
+            new SpikeModifier(new Vector2(4f, 0.8f)))) ;
+        provider.RegisterObjectCreator("spikes-patio", new ObjectCreator(
+            new SceneLoader("D04Z01S02_DECO", "MIDDLEGROUND/AfterPlayer/Gameplay/Spikes/{0}"),
+            new SpikeModifier(new Vector2(2.6f, 0.8f)))) ;
+        provider.RegisterObjectCreator("spikes-canvases", new ObjectCreator(
+            new SceneLoader("D05Z02S01_DECO", "MIDDLEGROUND/AfterPlayer/Gameplay/Spikes/{0}"),
+            new SpikeModifier(new Vector2(3f, 0.8f))));
+        provider.RegisterObjectCreator("spikes-rooftops", new ObjectCreator(
+            new SceneLoader("D06Z01S04_DECO", "MIDDLEGROUND/AfterPlayer/Gameplay/Spikes/{0}"),
+            new SpikeModifier()));
+        provider.RegisterObjectCreator("spikes-brotherhood", new ObjectCreator(
+            new SceneLoader("D17BZ02S01_DECO", "MIDDLEGROUND (1)/AfterPlayer/Spikes/{0}"),
+            new SpikeModifier()));
+        provider.RegisterObjectCreator("spikes-miriam", new ObjectCreator(
+            new SceneLoader("D23Z01S05_DECO", "MIDDLEGROUND/AfterPlayer/Spikes/{0}"),
             new SpikeModifier()));
 
         // Misc.
         provider.RegisterObjectCreator("lantern", new ObjectCreator(
             new SceneLoader("D20Z01S02_LOGIC", "LOGIC/INTERACTABLES/Chain Hook"),
             new NoModifier("Lantern")));
+        provider.RegisterObjectCreator("bell-face", new ObjectCreator(
+            new SceneLoader("D03Z02S06_LOGIC", "TRAPS/TRAP_SHOCK_ENEMY"),
+            new NoModifier("Face bell")));
+        provider.RegisterObjectCreator("bell-iron", new ObjectCreator(
+            new SceneLoader("D03Z02S06_LOGIC", "TRAPS/TRAP_SHOCK_CHAIN_REACTION"),
+            new NoModifier("Iron bell")));
+
     }
 }
