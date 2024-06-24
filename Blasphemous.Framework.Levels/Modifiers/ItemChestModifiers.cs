@@ -6,8 +6,12 @@ using UnityEngine;
 
 namespace Blasphemous.Framework.Levels.Modifiers;
 
-internal class GroundItemModifier : IModifier
+/// <summary>
+/// modifier for items lying on the ground
+/// </summary>
+public class GroundItemModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         obj.name = $"Ground item {data.id}";
@@ -21,8 +25,12 @@ internal class GroundItemModifier : IModifier
     }
 }
 
-internal class ShrineItemModifier : IModifier
+/// <summary>
+/// modifier for item in a relic shrine
+/// </summary>
+public class ShrineItemModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         obj.name = $"Shrine item {data.id}";
@@ -42,8 +50,12 @@ internal class ShrineItemModifier : IModifier
     }
 }
 
-internal class ChestModifier : IModifier
+/// <summary>
+/// modifier for item stored in a chest
+/// </summary>
+public class ChestModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         obj.name = $"Chest {data.id}";

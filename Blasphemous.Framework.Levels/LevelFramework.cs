@@ -270,6 +270,7 @@ public class LevelFramework : BlasMod
         return _additions.Values.SelectMany(x => x).Select(x => x.type).Distinct();
     }
 
+    /// <inheritdoc/>
     protected override void OnRegisterServices(ModServiceProvider provider)
     {
         // Items

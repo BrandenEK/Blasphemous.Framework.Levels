@@ -2,8 +2,12 @@
 
 namespace Blasphemous.Framework.Levels.Modifiers;
 
-internal class BaseModifier : IModifier
+/// <summary>
+/// base modifier containing geometric data of the object
+/// </summary>
+public class BaseModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         obj.transform.position = data.position;

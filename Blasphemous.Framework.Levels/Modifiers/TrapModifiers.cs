@@ -2,8 +2,12 @@
 
 namespace Blasphemous.Framework.Levels.Modifiers;
 
-internal class SpikeModifier : IModifier
+/// <summary>
+/// modifier for spike objects
+/// </summary>
+public class SpikeModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         obj.name = "Spikes";
