@@ -38,3 +38,4 @@ public class SpikeModifier : IModifier
         _colliderSize = colliderSize;
     }
 }
+
