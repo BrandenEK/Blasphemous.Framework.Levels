@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Blasphemous.Framework.Levels.Modifiers;
 
 /// <summary>
-/// modifier for items lying on the ground
+/// Modifier for items lying on the ground
 /// </summary>
 public class GroundItemModifier : IModifier
 {
@@ -26,7 +26,7 @@ public class GroundItemModifier : IModifier
 }
 
 /// <summary>
-/// modifier for item in a relic shrine
+/// Modifier for item in a sword-heart shrine
 /// </summary>
 public class ShrineItemModifier : IModifier
 {
@@ -51,7 +51,7 @@ public class ShrineItemModifier : IModifier
 }
 
 /// <summary>
-/// modifier for item stored in a chest
+/// Modifier for item stored in a chest
 /// </summary>
 public class ChestModifier : IModifier
 {

@@ -3,11 +3,11 @@
 namespace Blasphemous.Framework.Levels.Modifiers;
 
 /// <summary>
-/// modifier for spike objects
+/// Modifier for spike objects
 /// </summary>
 public class SpikeModifier : IModifier
 {
-    private Vector2 _colliderSize;
+    private readonly Vector2 _colliderSize;
 
     /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
@@ -23,7 +23,7 @@ public class SpikeModifier : IModifier
     }
 
     /// <summary>
-    /// construct a basic spike with hitbox size (1.8, 0.8)
+    /// Construct a basic spike with hitbox size (1.8, 0.8)
     /// </summary>
     public SpikeModifier()
     {
@@ -31,7 +31,7 @@ public class SpikeModifier : IModifier
     }
 
     /// <summary>
-    /// construct spike with custom collider size
+    /// Construct spike with custom collider size
     /// </summary>
     public SpikeModifier(Vector2 colliderSize)
     {

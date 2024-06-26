@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Blasphemous.Framework.Levels.Modifiers;
 
 /// <summary>
-/// modifier for blood platforms
+/// Modifier for blood platforms
 /// </summary>
 public class BloodModifier : IModifier
 {

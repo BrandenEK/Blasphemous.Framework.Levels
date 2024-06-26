@@ -3,7 +3,7 @@
 namespace Blasphemous.Framework.Levels.Modifiers;
 
 /// <summary>
-/// base modifier containing geometric data of the object
+/// Base modifier containing geometric data of the object
 /// </summary>
 public class BaseModifier : IModifier
 {

@@ -298,7 +298,7 @@ public class LevelFramework : BlasMod
             new SceneLoader("D17Z01S10_LOGIC", "LOGIC/INTERACTABLES/{0}"),
             new BloodModifier()));
 
-        // spikes
+        // Spikes
         provider.RegisterObjectCreator("spikes-wasteland", new ObjectCreator(
             new SceneLoader("D01Z03S01_DECO", "MIDDLEGROUND/AfterPlayer/Spikes/{0}"),
             new SpikeModifier()));
@@ -307,14 +307,8 @@ public class LevelFramework : BlasMod
         provider.RegisterObjectCreator("lantern", new ObjectCreator(
             new SceneLoader("D20Z01S02_LOGIC", "LOGIC/INTERACTABLES/Chain Hook"),
             new NoModifier("Lantern")));
-        provider.RegisterObjectCreator("bell-face", new ObjectCreator(
-            new SceneLoader("D03Z02S06_LOGIC", "TRAPS/TRAP_SHOCK_ENEMY"),
-            new NoModifier("Face bell")));
         provider.RegisterObjectCreator("bell-iron", new ObjectCreator(
             new SceneLoader("D03Z02S06_LOGIC", "TRAPS/TRAP_SHOCK_CHAIN_REACTION"),
             new NoModifier("Iron bell")));
-        provider.RegisterObjectCreator("ladder-jondo", new ObjectCreator(
-            new SceneLoader("D03Z02S02_DECO", "MIDDLEGROUND/AfterPlayer/Gameplay/Ladders/{0}"),
-            new LadderModifier()));
     }
 }
