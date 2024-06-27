@@ -5,8 +5,12 @@ using UnityEngine;
 
 namespace Blasphemous.Framework.Levels.Modifiers;
 
-internal class BloodModifier : IModifier
+/// <summary>
+/// Modifier for blood platforms
+/// </summary>
+public class BloodModifier : IModifier
 {
+    /// <inheritdoc/>
     public void Apply(GameObject obj, ObjectData data)
     {
         // Must be added in reverse order so that previous platforms can reference their new ones
