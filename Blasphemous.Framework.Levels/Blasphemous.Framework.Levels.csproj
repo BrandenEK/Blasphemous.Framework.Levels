@@ -9,7 +9,7 @@
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
     <Description>Framework that allows other mods to implement level modifications</Description>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
 
     <TargetName>LevelFramework</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
