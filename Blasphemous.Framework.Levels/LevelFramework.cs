@@ -1,6 +1,7 @@
 ﻿using Blasphemous.Framework.Levels.Loaders;
 using Blasphemous.Framework.Levels.Modifiers;
 using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Helpers;
 using Framework.Managers;
 using Newtonsoft.Json;
 using System.Collections;
@@ -53,7 +54,7 @@ public class LevelFramework : BlasMod
             ProcessLevelEdits(editDict);
 
         int amount = _additions.Keys.Concat(_modifications.Keys).Concat(_deletions.Keys).Distinct().Count();
-        Log($"Loaded level modifications for {amount} scenes");
+        ModLog.Info($"Loaded level modifications for {amount} scenes");
     }
 
     private IEnumerable<Dictionary<string, LevelEdit>> LoadAllEdits()
@@ -61,7 +62,7 @@ public class LevelFramework : BlasMod
         string levelsPath = Path.GetFullPath("Modding/levels");
 
         return Directory.GetDirectories(levelsPath)
-            .Where(folder => IsModLoadedName(Path.GetFileName(folder), out _))
+            .Where(folder => ModHelper.IsModLoadedByName(Path.GetFileName(folder)))
             .Select(LoadModEdits);
     }
 
@@ -84,7 +85,7 @@ public class LevelFramework : BlasMod
         if (!hasAdditions && !hasModifications && !hasDeletions)
             return;
 
-        Log("Applying level modifications for " + newLevel);
+        ModLog.Info("Applying level modifications for " + newLevel);
         if (hasAdditions) AddObjects(additions);
         if (hasModifications) ModifyObjects(modifications, newLevel);
         if (hasDeletions) DeleteObjects(deletions, newLevel);
@@ -233,7 +234,7 @@ public class LevelFramework : BlasMod
             // Ensure a loader exists for this type of object
             if (!LevelRegister.TryGetLoader(type, out ILoader loader))
             {
-                LogError($"There is no creator to handle {type} objects");
+                ModLog.Error($"There is no creator to handle {type} objects");
                 continue;
             }
 
@@ -243,12 +244,12 @@ public class LevelFramework : BlasMod
 
             if (loadedObject == null)
             {
-                LogError("Failed to load object of type " + type);
+                ModLog.Error("Failed to load object of type " + type);
                 continue;
             }
 
             // Store it in the dictionary
-            Log("Successfully loaded object of type " + type);
+            ModLog.Info("Successfully loaded object of type " + type);
             loadedObject.name = type;
             loadedObject.transform.parent = Main.Instance.transform;
             loadedObject.transform.position = Vector3.zero;

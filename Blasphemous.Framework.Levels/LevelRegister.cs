@@ -35,6 +35,6 @@ public static class LevelRegister
             return;
 
         _creators.Add(type, creator);
-        Main.LevelFramework.Log($"Registered custom object creator: {type}");
+        ModLog.Info($"Registered custom object creator: {type}");
     }
 }
