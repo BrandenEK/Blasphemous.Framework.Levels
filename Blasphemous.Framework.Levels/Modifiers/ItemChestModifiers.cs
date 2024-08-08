@@ -1,4 +1,5 @@
 ﻿using Blasphemous.ModdingAPI;
+using Blasphemous.ModdingAPI.Helpers;
 using Framework.Inventory;
 using Framework.Managers;
 using Framework.Util;
@@ -21,7 +22,7 @@ public class GroundItemModifier : IModifier
 
         InteractableInvAdd addComp = obj.GetComponent<InteractableInvAdd>();
         addComp.item = data.id;
-        addComp.itemType = ItemModder.GetItemTypeFromId(data.id);
+        addComp.itemType = ItemHelper.GetItemTypeFromId(data.id);
     }
 }
 
@@ -65,6 +66,6 @@ public class ChestModifier : IModifier
 
         InteractableInvAdd addComp = obj.GetComponent<InteractableInvAdd>();
         addComp.item = data.id;
-        addComp.itemType = ItemModder.GetItemTypeFromId(data.id);
+        addComp.itemType = ItemHelper.GetItemTypeFromId(data.id);
     }
 }
