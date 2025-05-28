@@ -59,7 +59,8 @@ public class LevelFramework : BlasMod
 
     private IEnumerable<Dictionary<string, LevelEdit>> LoadAllEdits()
     {
-        string levelsPath = Path.GetFullPath("Modding/levels");
+        string levelsPath = Path.Combine(FileHandler.ModdingFolder, "levels");
+        Directory.CreateDirectory(levelsPath);
 
         return Directory.GetDirectories(levelsPath)
             .Where(folder => ModHelper.IsModLoadedByName(Path.GetFileName(folder)))
